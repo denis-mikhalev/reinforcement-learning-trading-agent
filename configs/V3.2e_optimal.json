@@ -1,0 +1,46 @@
+{
+  "model_version": "V3.2e_optimal",
+  "description": "Combination of all best settings",
+  "date_created": "2024-11-19",
+  
+  "symbol": "BTCUSDT",
+  "timeframe": "1d",
+  "algorithm": "A2C",
+  
+  "days": 1460,
+  "train_ratio": 0.85,
+  "total_timesteps": 250000,
+  
+  "initial_balance": 10000,
+  "commission": 0.001,
+  "slippage": 0.0005,
+  "lookback": 120,
+  "position_size": 0.95,
+  "enable_short": true,
+  "stop_loss": 0.0,
+  "max_holding_bars": 0,
+  
+  "learning_rate": 0.0003,
+  "n_steps": 5,
+  "gamma": 0.99,
+  "ent_coef": 0.01,
+  
+  "use_mtf": false,
+  "use_attention": false,
+  "use_cnn_attention": false,
+  
+  "early_stopping": true,
+  "patience": 10,
+  
+  "seed": 789,
+  "verbose": 1,
+  
+  "result": "Optimal combination of all improvements",
+  "notes": [
+    "Train ratio 0.85 for more data",
+    "Learning rate 0.0003 for stability",
+    "Early stopping patience=10",
+    "Best seed (789)",
+    "Goal: <10% overfitting, >50% return"
+  ]
+}

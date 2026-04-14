@@ -1,0 +1,17 @@
+{
+  "deposit": 10000,
+  "risk_pct": 0.01,
+  "leverage": 10,
+  "default_round_trip_cost_pct": 0.002, 
+  "min_edge_pct": 0.005,
+  "min_net_rr": 1.15,
+  "min_conf_edge_bp": 0.012,
+  "use_live_grid_optimizer": true,
+  "reject_negative_calibrated_ev": true,
+  "sizing_mode": "risk", 
+  "symbols": {
+    "BTCUSDT": {"min_edge_pct": 0.007, "round_trip_cost_pct": 0.0022},
+    "DOTUSDT": {"min_edge_pct": 0.005},
+    "PEPEUSDT": {"min_edge_pct": 0.006, "round_trip_cost_pct": 0.0025}
+  }
+}

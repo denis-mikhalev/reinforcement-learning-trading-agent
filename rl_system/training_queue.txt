@@ -1,0 +1,28 @@
+# Training Queue for RL Models
+# ============================
+# List configuration files to train sequentially (one per line)
+# Lines starting with # are comments
+# Empty lines are ignored
+
+# ada
+rl_system/configs/ada/a2c_ADAUSDT_15m_60bt_400d.json+
+rl_system/configs/ada/a2c_ADAUSDT_1h_60bt_600d.json
+rl_system/configs/ada/a2c_ADAUSDT_6h_60bt_1200d.json
+rl_system/configs/ada/a2c_ADAUSDT_6h_60bt_1400d.json
+rl_system/configs/ada/a2c_ADAUSDT_8h_60bt_1700d.json
+rl_system/configs/ada/a2c_ADAUSDT_8h_60bt_400d.json
+rl_system/configs/ada/a2c_ADAUSDT_8h_60bt_1000d.json
+rl_system/configs/ada/a2c_ADAUSDT_12h_60bt_1100d.json
+
+# btc
+rl_system/configs/btc/a2c_BTCUSDT_30m_60bt_1200d.json
+rl_system/configs/btc/a2c_BTCUSDT_2h_60bt_2500d.json
+rl_system/configs/btc/a2c_BTCUSDT_2h_60bt_1500d.json
+rl_system/configs/btc/a2c_BTCUSDT_8h_60bt_500d.json
+rl_system/configs/btc/a2c_BTCUSDT_8h_60bt_1000d.json
+rl_system/configs/btc/a2c_BTCUSDT_8h_60bt_1500d.json
+rl_system/configs/btc/a2c_BTCUSDT_12h_60bt_500d.json
+rl_system/configs/btc/a2c_BTCUSDT_12h_60bt_1000d.json
+rl_system/configs/btc/a2c_BTCUSDT_12h_60bt_1500d.json
+
+

@@ -1,0 +1,46 @@
+# Environment
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Models (too large for git)
+rl_system/models/
+rl_system/checkpoints/
+
+# Data & cache
+rl_system/data/
+data/
+*.pkl
+*.h5
+
+# Logs & state
+rl_system/logs/
+rl_system/live_state/
+logs/
+
+# Results (generated)
+**/evaluation_results/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

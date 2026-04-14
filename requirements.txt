@@ -1,0 +1,26 @@
+# Core RL
+stable-baselines3>=2.1.0
+gymnasium>=0.29.0
+torch>=2.0.0
+
+# Data
+pandas>=2.0.0
+numpy>=1.24.0
+ccxt>=4.0.0
+python-binance>=1.0.19
+
+# Technical Analysis
+TA-Lib>=0.4.28
+
+# ML Utilities
+scikit-learn>=1.3.0
+
+# Visualization
+matplotlib>=3.7.0
+
+# Notifications
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Terminal
+colorama>=0.4.0

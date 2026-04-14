@@ -1,0 +1,41 @@
+{
+  "model_version": "V3.2e_improved",
+  "description": "Improved V3.2e: seed=123, 300k timesteps to reduce overfitting",
+  "date_created": "2024-11-18",
+  
+  "symbol": "BTCUSDT",
+  "timeframe": "1d",
+  "algorithm": "A2C",
+  
+  "days": 1460,
+  "train_ratio": 0.8,
+  "total_timesteps": 300000,
+  
+  "initial_balance": 10000,
+  "commission": 0.001,
+  "slippage": 0.0005,
+  "lookback": 120,
+  "position_size": 0.95,
+  "enable_short": true,
+  "stop_loss": 0.0,
+  "max_holding_bars": 0,
+  
+  "learning_rate": 0.0007,
+  "n_steps": 5,
+  "gamma": 0.99,
+  "ent_coef": 0.01,
+  
+  "use_mtf": false,
+  "use_attention": false,
+  "use_cnn_attention": false,
+  
+  "seed": 123,
+  "verbose": 1,
+  
+  "result": "Testing improved configuration",
+  "notes": [
+    "Changed seed from 42 to 123",
+    "Increased timesteps from 200k to 300k",
+    "Goal: reduce overfitting (<20%) and improve return"
+  ]
+}

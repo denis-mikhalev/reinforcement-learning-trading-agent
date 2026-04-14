@@ -1,0 +1,43 @@
+{
+  "symbol": "BTCUSDT",
+  "timeframe": "1h",
+  "days": 730,
+  "train_ratio": 0.8,
+
+  "initial_balance": 10000,
+  "commission": 0.0006,
+  "slippage": 0.0003,
+  "lookback": 64,
+  "position_size": 0.2,
+  "enable_short": true,
+  "stop_loss": 0.01,
+  "max_holding_bars": 0,
+
+  "algorithm": "PPO",
+  "total_timesteps": 300000,
+  "learning_rate": 0.0003,
+  "gamma": 0.99,
+  "ent_coef": 0.01,
+  "n_steps": 2048,
+  "batch_size": 64,
+  "n_epochs": 10,
+
+  "use_attention": false,
+  "use_cnn_attention": false,
+  "attention_heads": 4,
+  "attention_layers": 2,
+
+  "use_mtf": true,
+
+  "model_name": null,
+  "save_freq": 20000,
+  "eval_freq": 50000,
+  "verbose": 1,
+
+  "early_stopping": false,
+  "patience": 10,
+  "seed": 42,
+
+  "description": "Default PPO config for BTCUSDT 1h with dense but moderate reward.",
+  "model_version": "v1"
+}
