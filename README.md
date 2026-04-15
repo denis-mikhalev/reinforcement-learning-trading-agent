@@ -6,6 +6,8 @@ The agent learns trading strategies through interaction with a custom Gymnasium 
 
 > 📋 **[Full System Capabilities →](FEATURES.md)** — detailed overview of all features, commands, and tools.
 
+**4** RL Algorithms · **99** Technical Indicators · **4-Level** Quality Gate · **Ensemble** Signal Aggregation · **33** Python Modules
+
 ## Architecture
 
 ```
@@ -13,7 +15,7 @@ The agent learns trading strategies through interaction with a custom Gymnasium 
 │                    Training Pipeline                     │
 │                                                          │
 │  Market Data ──→ Feature Engineering ──→ Gym Environment │
-│  (Binance)       (50+ indicators)       (Custom)         │
+│  (Binance)       (99 indicators)        (Custom)         │
 │                                              │           │
 │                                              ▼           │
 │                                         RL Agent         │
@@ -44,7 +46,7 @@ The agent learns trading strategies through interaction with a custom Gymnasium 
 | Component | File | Description |
 |-----------|------|-------------|
 | **Trading Environment** | `rl_system/trading_env.py` | Gymnasium-compatible env with long/short positions, commission, slippage, stop-loss |
-| **Feature Engineering** | `rl_system/feature_engineering.py` | 50+ technical indicators: trend, momentum, volatility, volume, price action |
+| **Feature Engineering** | `rl_system/feature_engineering.py` | 99 technical indicators across 9 categories: trend, momentum, volatility, volume, price action, market regime |
 | **RL Agent** | `rl_system/rl_agent.py` | Model wrapper for inference, signal generation, backtesting |
 | **Data Loader** | `rl_system/data_loader.py` | Market data fetching with caching (Binance API, no keys required) |
 | **Training** | `rl_system/train_agent_v2.py` | Full training pipeline with callbacks, early stopping, plateau detection |
@@ -140,7 +142,7 @@ Verdicts: ✅ READY FOR LIVE · ⚠️ USE WITH CAUTION · 📄 PAPER TRADING ON
 ├── rl_system/
 │   ├── trading_env.py          # Gymnasium trading environment
 │   ├── rl_agent.py             # Agent wrapper
-│   ├── feature_engineering.py  # Technical indicators (50+)
+│   ├── feature_engineering.py  # Technical indicators (99)
 │   ├── data_loader.py          # Market data with caching
 │   ├── config_manager.py       # Configuration management
 │   ├── train_agent_v2.py       # Training pipeline
@@ -160,6 +162,16 @@ Verdicts: ✅ READY FOR LIVE · ⚠️ USE WITH CAUTION · 📄 PAPER TRADING ON
 └── .env.example
 ```
 
+## Engineering Highlights
+
+- **Walk-forward validation** — multi-period stability testing to detect overfitting before deployment
+- **Ensemble signal aggregation** — majority voting consensus across multiple models per symbol
+- **4-level automated quality gate** — models are graded through critical, risk, stability, and learning checks
+- **Multi-Head Attention extractor** — optional Transformer-style feature extractor (4 heads, 2 layers)
+- **3 reward function variants** — default (balanced shaping), high-hold (unrealized PnL), realized-only (pure closure)
+- **Plateau detection** — automatic identification of training convergence regions across checkpoints
+- **Batch training queue** — overnight sequential training with error recovery and Telegram completion alerts
+
 ## Configuration
 
 Training configs are JSON files supporting:
@@ -173,10 +185,11 @@ See `configs/V3.2e.json` for an example configuration.
 
 ## Documentation
 
-- [RL Training Guide](docs/RL_TRAINING_GUIDE.md) — Training workflow and best practices
-- [Models Evaluation](docs/RL_MODELS_EVALUATION.md) — Evaluation methodology and metrics
-- [GPU Optimization Guide](docs/GPU_OPTIMIZATION_GUIDE.md) — GPU setup for training acceleration
-- [PPO Parameters Guide](rl_system/PPO_PARAMETERS_GUIDE.md) — PPO hyperparameter tuning reference
+- **[FEATURES.md](FEATURES.md)** — complete system capabilities, CLI reference, and all available tools
+- **[docs/RL_TRAINING_GUIDE.md](docs/RL_TRAINING_GUIDE.md)** — step-by-step training walkthrough
+- **[docs/RL_MODELS_EVALUATION.md](docs/RL_MODELS_EVALUATION.md)** — evaluation methodology and metrics
+- **[docs/GPU_OPTIMIZATION_GUIDE.md](docs/GPU_OPTIMIZATION_GUIDE.md)** — GPU acceleration setup and benchmarks
+- **[rl_system/PPO_PARAMETERS_GUIDE.md](rl_system/PPO_PARAMETERS_GUIDE.md)** — PPO hyperparameter tuning reference
 
 ## License
 
