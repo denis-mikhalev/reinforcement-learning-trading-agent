@@ -15,7 +15,7 @@ The agent learns trading strategies through interaction with a custom Gymnasium 
 │                    Training Pipeline                     │
 │                                                          │
 │  Market Data ──→ Feature Engineering ──→ Gym Environment │
-│  (Binance)       (99 indicators)        (Custom)         │
+│  (Exchange API)   (99 indicators)        (Custom)         │
 │                                              │           │
 │                                              ▼           │
 │                                         RL Agent         │
@@ -48,7 +48,7 @@ The agent learns trading strategies through interaction with a custom Gymnasium 
 | **Trading Environment** | `rl_system/trading_env.py` | Gymnasium-compatible env with long/short positions, commission, slippage, stop-loss |
 | **Feature Engineering** | `rl_system/feature_engineering.py` | 99 technical indicators across 9 categories: trend, momentum, volatility, volume, price action, market regime |
 | **RL Agent** | `rl_system/rl_agent.py` | Model wrapper for inference, signal generation, backtesting |
-| **Data Loader** | `rl_system/data_loader.py` | Market data fetching with caching (Binance API, no keys required) |
+| **Data Loader** | `rl_system/data_loader.py` | Market data fetching with caching (public exchange API, no keys required) |
 | **Training** | `rl_system/train_agent_v2.py` | Full training pipeline with callbacks, early stopping, plateau detection |
 | **Batch Training** | `rl_system/batch_train.py` | Sequential training of multiple configurations from a queue file |
 | **Quality Assessment** | `rl_system/model_quality_assessment.py` | 4-level model grading: critical → risk → stability → learning |
@@ -63,7 +63,7 @@ The agent learns trading strategies through interaction with a custom Gymnasium 
 - **Environment**: [Gymnasium](https://gymnasium.farama.org/)
 - **Deep Learning**: PyTorch
 - **Feature Engineering**: TA-Lib, pandas, numpy
-- **Data Source**: Binance public API (via ccxt / python-binance)
+- **Data Source**: Public exchange API (OHLCV via python-binance / ccxt)
 - **Notifications**: Telegram Bot API (optional)
 
 ## Quick Start

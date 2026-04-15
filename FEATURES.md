@@ -291,9 +291,9 @@ Symbol-specific cost overrides via `risk_config.json`.
 | `python rl_system/cleanup_unused_checkpoints.py --dry-run` | Preview checkpoint cleanup |
 | `python rl_system/cleanup_unused_checkpoints.py --yes` | Remove unused checkpoints |
 
-**Data pipeline**: Binance public API → Pickle cache (24h TTL) → Feature engineering → Gymnasium environment
+**Data pipeline**: Exchange public API → Pickle cache (24h TTL) → Feature engineering → Gymnasium environment
 
-No API keys required — uses public OHLCV endpoints with automatic Binance.US fallback for geo-restricted regions.
+No API keys required — uses public OHLCV endpoints with automatic fallback for geo-restricted regions.
 
 ---
 
@@ -306,7 +306,7 @@ No API keys required — uses public OHLCV endpoints with automatic Binance.US f
 | Deep Learning | PyTorch |
 | Indicators | TA-Lib |
 | Data Processing | pandas, NumPy |
-| Data Source | Binance API (python-binance) |
+| Data Source | Exchange API (python-binance, ccxt) |
 | Notifications | Telegram Bot API |
 | Visualization | Matplotlib |
 | Monitoring | TensorBoard |

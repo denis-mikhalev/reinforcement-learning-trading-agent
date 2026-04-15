@@ -1,5 +1,5 @@
 """
-Data Loader для загрузки исторических данных с Binance
+Data Loader для загрузки исторических рыночных данных
 =======================================================
 
 Поддерживает кеширование, несколько таймфреймов, мультисимвольную загрузку.
@@ -17,7 +17,7 @@ from binance.client import Client
 
 class DataLoader:
     """
-    Загружает и кеширует исторические данные с Binance.
+    Загружает и кеширует исторические рыночные данные.
     """
     
     def __init__(self, 
@@ -26,8 +26,8 @@ class DataLoader:
                  cache_dir: str = "rl_system/data"):
         """
         Args:
-            api_key: Binance API key (опционально, для публичных данных не нужен)
-            api_secret: Binance API secret
+            api_key: API key (опционально, для публичных данных не нужен)
+            api_secret: API secret
             cache_dir: Директория для кеша
         """
         # Откладываем создание клиента до первого использования (ленивая загрузка)
@@ -39,26 +39,26 @@ class DataLoader:
     
     @property
     def client(self):
-        """Ленивая инициализация Binance клиента с fallback на Binance.US."""
+        """Ленивая инициализация клиента биржи с fallback на .US endpoint."""
         if self._client is None:
             try:
-                # Пробуем стандартный Binance API
+                # Пробуем стандартный API
                 self._client = Client(self._api_key, self._api_secret)
-                print("✅ Подключение к Binance.com")
+                print("✅ Подключение к основному API")
             except Exception as e:
-                # Если ошибка связана с geo-ограничениями, переключаемся на Binance.US
+                # Если ошибка связана с geo-ограничениями, переключаемся на US endpoint
                 error_msg = str(e)
                 if "restricted location" in error_msg.lower() or "service unavailable" in error_msg.lower():
-                    print(f"⚠️  Binance.com недоступен (geo-ограничение)")
-                    print("🔄 Переключение на Binance.US...")
+                    print(f"⚠️  Основной API недоступен (geo-ограничение)")
+                    print("🔄 Переключение на US endpoint...")
                     
                     try:
-                        # Создаем клиент для Binance.US используя параметр tld='us'
+                        # Создаем клиент с параметр tld='us'
                         self._client = Client(self._api_key, self._api_secret, tld='us')
-                        print("✅ Подключение к Binance.US (api.binance.us)")
+                        print("✅ Подключение к US endpoint")
                     except Exception as us_error:
-                        print(f"❌ Binance.US также недоступен: {us_error}")
-                        raise RuntimeError(f"Не удалось подключиться ни к Binance.com, ни к Binance.US: {e}")
+                        print(f"❌ US endpoint также недоступен: {us_error}")
+                        raise RuntimeError(f"Не удалось подключиться ни к основному, ни к US endpoint: {e}")
                 else:
                     # Другая ошибка - пробрасываем дальше
                     raise
@@ -112,9 +112,9 @@ class DataLoader:
             else:
                 print(f"⚠️ Кэш устарел ({cache_age_hours:.1f}ч > {max_cache_age_hours}ч), обновляем...")
         
-        # Загружаем с Binance
+        # Загружаем с биржи
         print(f"🌐 Загрузка {symbol} {timeframe} за последние {days} дней...")
-        df = self._fetch_from_binance(symbol, timeframe, days)
+        df = self._fetch_from_exchange(symbol, timeframe, days)
         
         # Сохраняем в кеш
         if use_cache:
@@ -127,8 +127,8 @@ class DataLoader:
         
         return df
     
-    def _fetch_from_binance(self, symbol: str, timeframe: str, days: int) -> pd.DataFrame:
-        """Загружает данные с Binance API."""
+    def _fetch_from_exchange(self, symbol: str, timeframe: str, days: int) -> pd.DataFrame:
+        """Загружает данные с Exchange API."""
         # Рассчитываем временной интервал
         end_time = datetime.now()
         start_time = end_time - timedelta(days=days)
@@ -144,7 +144,7 @@ class DataLoader:
                 start_str=start_str
             )
         except Exception as e:
-            raise RuntimeError(f"Ошибка загрузки данных с Binance: {e}")
+            raise RuntimeError(f"Ошибка загрузки данных: {e}")
         
         # Конвертируем в DataFrame
         df = pd.DataFrame(klines, columns=[

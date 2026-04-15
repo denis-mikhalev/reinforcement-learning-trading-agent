@@ -376,7 +376,7 @@ def parse_args():
     # Разбиение можно задать либо через train_ratio, либо через желаемую длину теста в днях
     parser.add_argument('--train-ratio', type=float, default=0.8, help='Train/test split ratio (0.8 = 80% train, 20% test)')
     parser.add_argument('--test-days-target', type=int, default=None, help='Desired test period length in days (overrides train_ratio if set)')
-    parser.add_argument('--no-cache', action='store_true', help='Force reload data from Binance (ignore cache)')
+    parser.add_argument('--no-cache', action='store_true', help='Force reload data from exchange (ignore cache)')
     parser.add_argument('--max-cache-age', type=int, default=24, help='Max cache age in hours (default: 24h)')
     
     # Environment arguments

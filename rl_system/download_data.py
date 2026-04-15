@@ -1,5 +1,5 @@
 """
-Утилита для предварительной загрузки данных с Binance
+Утилита для предварительной загрузки рыночных данных
 Использование: python download_data.py --symbol BTCUSDT --timeframe 30m --days 90
 """
 import sys
@@ -14,7 +14,7 @@ from data_loader import DataLoader
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Загрузка данных с Binance")
+    parser = argparse.ArgumentParser(description="Загрузка рыночных данных")
     parser.add_argument("--symbol", type=str, default="BTCUSDT", help="Торговая пара")
     parser.add_argument("--timeframe", type=str, default="30m", help="Таймфрейм")
     parser.add_argument("--days", type=int, default=90, help="Количество дней истории")
