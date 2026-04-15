@@ -4,6 +4,8 @@ A deep reinforcement learning system for financial market signal generation, bui
 
 The agent learns trading strategies through interaction with a custom Gymnasium environment, using historical OHLCV market data. It supports multiple RL algorithms (PPO, A2C, SAC, TD3), multi-timeframe feature engineering, batch training, model quality assessment, and live signal generation.
 
+> 📋 **[Full System Capabilities →](FEATURES.md)** — detailed overview of all features, commands, and tools.
+
 ## Architecture
 
 ```
