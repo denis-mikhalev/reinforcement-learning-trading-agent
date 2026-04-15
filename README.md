@@ -1,12 +1,12 @@
 # Reinforcement Learning Trading Agent
 
-A deep reinforcement learning system for financial market signal generation, built as a practical exploration of RL applied to real-world sequential decision-making.
+A deep reinforcement learning (ML/AI) system for financial market signal generation, built as a practical exploration of machine learning applied to real-world sequential decision-making.
 
-The agent learns trading strategies through interaction with a custom Gymnasium environment, using historical OHLCV market data. It supports multiple RL algorithms (PPO, A2C, SAC, TD3), multi-timeframe feature engineering, batch training, model quality assessment, and live signal generation.
+The agent learns trading strategies through interaction with a custom Gymnasium environment, using historical OHLCV market data. It supports multiple RL algorithms (PPO, A2C, SAC, TD3), neural network feature extractors, multi-timeframe feature engineering, batch training, model quality assessment, and live signal generation.
 
 > 📋 **[Full System Capabilities →](FEATURES.md)** — detailed overview of all features, commands, and tools.
 
-**4** RL Algorithms · **99** Technical Indicators · **4-Level** Quality Gate · **Ensemble** Signal Aggregation · **33** Python Modules
+**4** RL Algorithms · **99** Technical Indicators · **Neural Network** Feature Extractor · **4-Level** Quality Gate · **Ensemble** Signal Aggregation · **33** Python Modules
 
 ## Architecture
 
@@ -61,7 +61,7 @@ The agent learns trading strategies through interaction with a custom Gymnasium 
 
 - **RL Framework**: [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) (PPO, A2C, SAC, TD3)
 - **Environment**: [Gymnasium](https://gymnasium.farama.org/)
-- **Deep Learning**: PyTorch
+- **ML / Deep Learning**: PyTorch (neural networks, multi-head attention)
 - **Feature Engineering**: TA-Lib, pandas, numpy
 - **Data Source**: Public exchange API (OHLCV via python-binance / ccxt)
 - **Notifications**: Telegram Bot API (optional)

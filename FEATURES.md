@@ -1,6 +1,6 @@
 # System Capabilities
 
-A complete overview of all features and tools available in this RL trading agent system.
+A complete overview of all features and tools available in this ML-powered reinforcement learning trading agent system.
 
 ---
 
@@ -303,7 +303,7 @@ No API keys required — uses public OHLCV endpoints with automatic fallback for
 |-------|-----------|
 | RL Framework | [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) |
 | Environment | [Gymnasium](https://gymnasium.farama.org/) |
-| Deep Learning | PyTorch |
+| ML / Deep Learning | PyTorch (neural networks, attention mechanism) |
 | Indicators | TA-Lib |
 | Data Processing | pandas, NumPy |
 | Data Source | Exchange API (python-binance, ccxt) |
