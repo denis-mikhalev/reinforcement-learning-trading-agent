@@ -10,35 +10,24 @@ The agent learns trading strategies through interaction with a custom Gymnasium 
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    Training Pipeline                     │
-│                                                          │
-│  Market Data ──→ Feature Engineering ──→ Gym Environment │
-│  (Exchange API)   (99 indicators)        (Custom)         │
-│                                              │           │
-│                                              ▼           │
-│                                         RL Agent         │
-│                                    (PPO/A2C/SAC/TD3)     │
-│                                              │           │
-│                                              ▼           │
-│                                    Model Checkpoints     │
-│                                              │           │
-│                          ┌───────────────────┤           │
-│                          ▼                   ▼           │
-│                   Quality Assessment    Evaluation        │
-│                   (4-level grading)    (Backtesting)      │
-└─────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    subgraph TP[" Training Pipeline "]
+        A["📥 Market Data\n(Exchange API)"] --> B["⚙️ Feature Engineering\n(99 indicators)"]
+        B --> C["🏋️ Gym Environment\n(Custom)"]
+        C --> D["🤖 RL Agent\n(PPO / A2C / SAC / TD3)"]
+        D --> E["💾 Model Checkpoints"]
+        E --> F["✅ Quality Assessment\n(4-level grading)"]
+        E --> G["📊 Evaluation\n(Backtesting)"]
+    end
 
-┌─────────────────────────────────────────────────────────┐
-│                  Live Signal Pipeline                     │
-│                                                          │
-│  Model Registry ──→ Live Agents ──→ Signal Aggregator    │
-│  (text file)        (per model)     (ensemble consensus) │
-│                                              │           │
-│                                              ▼           │
-│                                     Telegram / Console   │
-└─────────────────────────────────────────────────────────┘
+    subgraph LP[" Live Signal Pipeline "]
+        H["📋 Model Registry\n(text file)"] --> I["⚡ Live Agents\n(per model)"]
+        I --> J["🔀 Signal Aggregator\n(ensemble consensus)"]
+        J --> K["📬 Telegram / Console"]
+    end
+
+    TP -.->|trained models| LP
 ```
 
 ## Key Components
