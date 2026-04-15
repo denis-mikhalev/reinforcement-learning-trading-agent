@@ -16,7 +16,7 @@ from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
 
 from data_loader import DataLoader
 from feature_engineering import FeatureEngineer
-from trading_env import CryptoTradingEnv, Positions
+from trading_env import MarketTradingEnv, Positions
 
 
 def parse_args():
@@ -276,7 +276,7 @@ def main():
     
     # Создаем окружение
     print(f"🎮 Creating environment...")
-    env = CryptoTradingEnv(
+    env = MarketTradingEnv(
         df=df_features,
         initial_balance=config.get('initial_balance', 10000),
         commission=config.get('commission', 0.001),

@@ -8,7 +8,7 @@ from stable_baselines3 import A2C, PPO, SAC, TD3
 
 from data_loader import DataLoader
 from feature_engineering import FeatureEngineer
-from trading_env import CryptoTradingEnv
+from trading_env import MarketTradingEnv
 from config_manager import ConfigManager
 from plateau_analysis import compute_plateau, compute_live_verdict, load_thresholds_from_config
 
@@ -66,8 +66,8 @@ def load_base_config(model_dir: Path) -> dict:
         return json.load(f)
 
 
-def build_test_env(df, config: dict) -> CryptoTradingEnv:
-    return CryptoTradingEnv(
+def build_test_env(df, config: dict) -> MarketTradingEnv:
+    return MarketTradingEnv(
         df=df,
         initial_balance=config.get("initial_balance", 10000.0),
         commission=config.get("commission", 0.0006),

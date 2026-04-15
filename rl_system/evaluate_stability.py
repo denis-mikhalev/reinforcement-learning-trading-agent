@@ -23,7 +23,7 @@ from typing import Dict, List, Tuple
 sys.path.append('rl_system')
 from data_loader import DataLoader
 from feature_engineering import FeatureEngineer
-from trading_env import CryptoTradingEnv
+from trading_env import MarketTradingEnv
 
 
 def load_model(model_path: str):
@@ -49,7 +49,7 @@ def load_model(model_path: str):
 
 def evaluate_on_period(model, df: pd.DataFrame, config: dict, period_name: str) -> Dict:
     """Оценивает модель на конкретном временном периоде."""
-    env = CryptoTradingEnv(
+    env = MarketTradingEnv(
         df=df,
         initial_balance=config.get('initial_balance', 10000),
         commission=config.get('commission', 0.001),

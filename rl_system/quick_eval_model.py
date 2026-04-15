@@ -13,7 +13,7 @@ from stable_baselines3 import PPO, A2C, SAC, TD3
 
 from data_loader import DataLoader
 from feature_engineering import FeatureEngineer
-from trading_env import CryptoTradingEnv
+from trading_env import MarketTradingEnv
 
 
 def evaluate_model(model_path: str):
@@ -102,7 +102,7 @@ def evaluate_model(model_path: str):
     
     # Создаем test окружение
     print(f"🎮 Creating test environment...")
-    test_env = CryptoTradingEnv(
+    test_env = MarketTradingEnv(
         df=test_df,
         initial_balance=10000.0,
         commission=config['commission'],

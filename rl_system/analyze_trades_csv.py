@@ -45,7 +45,7 @@ def analyze_trades_csv(path: Path):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Analyze trades CSV exported from CryptoTradingEnv.")
+    parser = argparse.ArgumentParser(description="Analyze trades CSV exported from MarketTradingEnv.")
     parser.add_argument("csv_path", type=str, help="Path to trades CSV file")
     args = parser.parse_args()
 

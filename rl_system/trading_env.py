@@ -27,7 +27,7 @@ class Positions(IntEnum):
     LONG = 1
 
 
-class CryptoTradingEnv(gym.Env):
+class MarketTradingEnv(gym.Env):
     """
     Окружение для крипто-трейдинга с поддержкой:
     - Long/Short позиций
@@ -741,7 +741,7 @@ if __name__ == "__main__":
     df_features = engineer.calculate_features(df)
     
     # Создаем окружение
-    env = CryptoTradingEnv(df_features, lookback_window=60)
+    env = MarketTradingEnv(df_features, lookback_window=60)
     
     print("🎮 Testing Trading Environment...")
     print(f"Observation space: {env.observation_space.shape}")

@@ -37,7 +37,7 @@ from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
 
 from rl_system.data_loader import DataLoader
 from rl_system.feature_engineering import FeatureEngineer
-from rl_system.trading_env import CryptoTradingEnv, Positions
+from rl_system.trading_env import MarketTradingEnv, Positions
 from telegram_sender import send_trading_signal, format_price
 
 
@@ -80,7 +80,7 @@ class RLLiveTrader:
         self.feature_engineer = FeatureEngineer()
 
         # Вспомогательное окружение, повторяющее логику обучения, для формирования obs
-        self.env: Optional[CryptoTradingEnv] = None
+        self.env: Optional[MarketTradingEnv] = None
         
         # Последний сигнал для предотвращения дублирования
         self.last_signal = None
@@ -321,7 +321,7 @@ class RLLiveTrader:
             raise
     
     def _prepare_observation(self, df: pd.DataFrame) -> np.ndarray:
-        """Подготавливает observation через CryptoTradingEnv, как при обучении."""
+        """Подготавливает observation через MarketTradingEnv, как при обучении."""
         # Получаем все параметры из конфига модели (без дефолтов - они должны быть в конфиге)
         lookback = int(self.config.get('lookback', 64))
         initial_balance = float(self.config.get('initial_balance', 10000.0))
@@ -389,7 +389,7 @@ class RLLiveTrader:
 
         # Если окружение ещё не создано или поменялась длина df, пересоздаём
         if self.env is None or getattr(self.env, 'lookback_window', None) != lookback:
-            self.env = CryptoTradingEnv(
+            self.env = MarketTradingEnv(
                 df=df_proc,
                 initial_balance=initial_balance,
                 commission=commission,
@@ -655,7 +655,7 @@ class RLLiveTrader:
             time_since_open_sec = int(time_since_open.total_seconds())
             time_to_close_sec = int(time_to_close.total_seconds())
 
-            # Подготавливаем observation через CryptoTradingEnv (как при обучении)
+            # Подготавливаем observation через MarketTradingEnv (как при обучении)
             obs = self._prepare_observation(df)
             
 

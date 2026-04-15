@@ -15,7 +15,7 @@ from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
 
 from data_loader import DataLoader
 from feature_engineering import FeatureEngineer
-from trading_env import CryptoTradingEnv, Actions, Positions
+from trading_env import MarketTradingEnv, Actions, Positions
 
 
 class RLAgent:
@@ -148,9 +148,9 @@ class RLAgent:
             from pathlib import Path
             # Add parent directory to path for imports
             sys.path.insert(0, str(Path(__file__).parent.parent))
-            from rl_system.trading_env import CryptoTradingEnv
+            from rl_system.trading_env import MarketTradingEnv
             
-            # Only pass relevant arguments to CryptoTradingEnv
+            # Only pass relevant arguments to MarketTradingEnv
             env_kwargs = {
                 'initial_balance': self.config.get('initial_balance', 10000.0),
                 'commission': self.config.get('commission', 0.001),
@@ -159,7 +159,7 @@ class RLAgent:
                 'position_size': self.config.get('position_size', 1.0),
                 'enable_short': self.config.get('enable_short', True)
             }
-            dummy_env = CryptoTradingEnv(df_features.copy(), **env_kwargs)
+            dummy_env = MarketTradingEnv(df_features.copy(), **env_kwargs)
             dummy_vec_env = DummyVecEnv([lambda: dummy_env])
             self.vec_normalize = VecNormalize.load(self.vec_normalize_path, dummy_vec_env)
             self.vec_normalize.training = False

@@ -40,7 +40,7 @@ if sys.platform == 'win32':
 sys.path.append('rl_system')
 from data_loader import DataLoader
 from feature_engineering import FeatureEngineer
-from trading_env import CryptoTradingEnv
+from trading_env import MarketTradingEnv
 from select_best_model import select_best_checkpoint
 from plateau_analysis import compute_plateau, compute_live_verdict, load_thresholds_from_config
 from model_quality_assessment import assess_model_quality, format_quality_assessment_markdown
@@ -253,10 +253,10 @@ class DetailedEvalCallback(EvalCallback):
             # eval_env это DummyVecEnv, достаем реальный env
             real_env = self.eval_env.envs[0]
             
-            # Проверяем что env это наш CryptoTradingEnv (не Monitor wrapper)
-            if hasattr(real_env, 'env') and isinstance(real_env.env, CryptoTradingEnv):
+            # Проверяем что env это наш MarketTradingEnv (не Monitor wrapper)
+            if hasattr(real_env, 'env') and isinstance(real_env.env, MarketTradingEnv):
                 trading_env = real_env.env
-            elif isinstance(real_env, CryptoTradingEnv):
+            elif isinstance(real_env, MarketTradingEnv):
                 trading_env = real_env
             else:
                 # Не можем получить метрики
@@ -571,7 +571,7 @@ def get_algorithm_defaults(algorithm: str) -> dict:
 
 def create_env(df, args, is_eval=False):
     """Создает окружение с Monitor wrapper."""
-    env = CryptoTradingEnv(
+    env = MarketTradingEnv(
         df=df,
         initial_balance=args.initial_balance,
         commission=args.commission,
@@ -1502,7 +1502,7 @@ def train_agent(args):
     
     # Оцениваем FINAL модель (для сравнения с BEST)
     print(f"\n📊 Running evaluation on FINAL model (last training step)...")
-    final_eval_env = CryptoTradingEnv(
+    final_eval_env = MarketTradingEnv(
         df=test_df,
         initial_balance=10000.0,
         commission=config['commission'],
@@ -1584,7 +1584,7 @@ def train_agent(args):
         best_model = model_class.load(str(best_model_path))
         
         # Создаем чистое окружение для оценки
-        best_eval_env = CryptoTradingEnv(
+        best_eval_env = MarketTradingEnv(
             df=test_df,
             initial_balance=10000.0,
             commission=config['commission'],

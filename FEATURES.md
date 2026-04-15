@@ -17,7 +17,7 @@ A complete overview of all features and tools available in this RL trading agent
 
 ### Custom Gymnasium Environment
 
-The trading environment (`CryptoTradingEnv`) simulates realistic market conditions:
+The trading environment (`MarketTradingEnv`) simulates realistic market conditions:
 
 - **3 actions**: BUY, SELL, HOLD
 - **3 position states**: Long (+1), Flat (0), Short (-1)

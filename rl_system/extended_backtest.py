@@ -7,7 +7,7 @@ from stable_baselines3 import A2C, PPO, SAC, TD3
 
 from data_loader import DataLoader
 from feature_engineering import FeatureEngineer
-from trading_env import CryptoTradingEnv
+from trading_env import MarketTradingEnv
 
 ALGO_CLASSES = {
     "A2C": A2C,
@@ -51,7 +51,7 @@ def run_extended_backtest(model_path: Path, config_path: Path, days: int = 120) 
     model_cls = ALGO_CLASSES[algo]
     model = model_cls.load(str(model_path))
 
-    env = CryptoTradingEnv(
+    env = MarketTradingEnv(
         df=df_test,
         initial_balance=config.get("initial_balance", 10000.0),
         commission=config.get("commission", 0.0006),

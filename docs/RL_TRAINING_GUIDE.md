@@ -7,7 +7,7 @@ For each run the script:
 - Loads OHLCV data via `DataLoader`.
 - Builds features via `FeatureEngineer` (enhanced + optional MTF).
 - Splits data into train/test using `days` + `train_ratio` or `test_days`/`test_ratio`.
-- Creates `CryptoTradingEnv` with `lookback`, risk parameters, etc.
+- Creates `MarketTradingEnv` with `lookback`, risk parameters, etc.
 - Trains selected algorithm (A2C, PPO, SAC, TD3).
 - Saves models and configs into `rl_system/models/<MODEL_NAME>`.
 

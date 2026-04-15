@@ -30,7 +30,7 @@ from data_loader import DataLoader
 
 from feature_engineering import FeatureEngineerdef find_all_models() -> List[Path]:
 
-from trading_env import CryptoTradingEnv    """Находит все обученные модели."""
+from trading_env import MarketTradingEnv    """Находит все обученные модели."""
 
     models_dir = Path("rl_system/models")
 
@@ -150,7 +150,7 @@ def evaluate_model(model_path: Path):        print(f"❌ Models directory not fo
 
         # Создаем test окружение                pass
 
-        test_env = CryptoTradingEnv(        elif 'Average Trades:' in line:
+        test_env = MarketTradingEnv(        elif 'Average Trades:' in line:
 
             df=test_df,            try:
 
