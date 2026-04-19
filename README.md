@@ -1,5 +1,11 @@
 # Reinforcement Learning Trading Agent
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square&logo=python)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.x-EE4C2C?style=flat-square&logo=pytorch)
+![Stable-Baselines3](https://img.shields.io/badge/Stable--Baselines3-PPO%2FA2C%2FSAC%2FTD3-blueviolet?style=flat-square)
+![ML](https://img.shields.io/badge/Machine%20Learning-Reinforcement%20Learning-purple?style=flat-square)
+![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+
 A deep reinforcement learning (ML/AI) system for financial market signal generation, built as a practical exploration of machine learning applied to real-world sequential decision-making.
 
 The agent learns trading strategies through interaction with a custom Gymnasium environment, using historical OHLCV market data. It supports multiple RL algorithms (PPO, A2C, SAC, TD3), neural network feature extractors, multi-timeframe feature engineering, batch training, model quality assessment, and live signal generation.
