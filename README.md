@@ -52,6 +52,12 @@ flowchart TD
 | **Ensemble** | `rl_system/live_signals_summary.py` | Signal aggregation across models with consensus voting |
 | **Config Manager** | `rl_system/config_manager.py` | Presets (conservative/balanced/aggressive) and per-algorithm defaults |
 
+## Results Preview
+
+After training, the system evaluates every saved checkpoint and produces a quality report. Below is an example from a XRPUSDT 6h PPO model trained over 1M timesteps — the best checkpoint (step 282 500) achieved **+26.6% return**, profit factor **3.06**, and win rate **69.8%** on the 180-day backtest period.
+
+![Checkpoint Quality Comparison](docs/images/training_analysis.png)
+
 ## Tech Stack
 
 - **RL Framework**: [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) (PPO, A2C, SAC, TD3)
