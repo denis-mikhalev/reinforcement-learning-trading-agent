@@ -192,6 +192,30 @@ See `configs/V3.2e.json` for an example configuration.
 - **[docs/GPU_OPTIMIZATION_GUIDE.md](docs/GPU_OPTIMIZATION_GUIDE.md)** — GPU acceleration setup and benchmarks
 - **[rl_system/PPO_PARAMETERS_GUIDE.md](rl_system/PPO_PARAMETERS_GUIDE.md)** — PPO hyperparameter tuning reference
 
+## Screenshots
+
+### Checkpoint Quality Comparison
+*Auto-generated 6-panel visualization after each training run — tracks Return %, Profit Factor, Win Rate, Trade Activity, and Combined Score across all checkpoints to identify the optimal model.*
+
+![Checkpoint Quality Comparison](docs/images/checkpoint_quality_comparison.png)
+
+### Live Agent Terminal
+*Real-time signal output from a running live agent — shows environment parameters, position metadata, and timestamped signals with probability breakdown (H/B/S).*
+
+![Live Agent Terminal](docs/images/live_agent_terminal.png)
+
+### Ensemble Signals Summary
+*Multi-model ensemble output — BUY/SELL/HOLD signals grouped by symbol with per-model backtest stats (WR, PF, Return, Drawdown) and consensus vote counts at the bottom.*
+
+![Ensemble Signals Summary](docs/images/ensemble_signals_terminal.png)
+
+### Checkpoints Comparison Report
+*Auto-generated markdown report per training run — full hyperparameter config, training results, and per-checkpoint metrics table with the best checkpoint highlighted.*
+
+![Checkpoints Report](docs/images/checkpoints_report_header.png)
+
+---
+
 ## License
 
 MIT
